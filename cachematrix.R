@@ -1,15 +1,15 @@
 ## These two functions allow you to create a special "matrix" object that caches its inverse.
-## Then aenable you to get the cached version of the inverse id it exists without having to 
-## compute the inverse again.
+## Then allow you to get the cached version of the inverse if it exists. Without having to 
+## compute the inverse again. Which saves time and computing resources
 
 ## makeCacheMatrix takes in a matrix and creates a cache object and stores the inverse 
 ## of the matrix. 
 
 makeCacheMatrix <- function(x = matrix()) { # takes a matrix object as argument  
 
-  inverse <- NULL  # create an object to store the matrix and initialise it to NULL
+  inverse <- NULL  # create an object to store the matrix and initialises it to NULL
 
-  # Allows you to change the value of the matrix from outside and reset the inverse to NULL
+  # Allows you to change the values of the matrix object from outside and resets the inverse to NULL
   set <- function(y) {
     x <<- y
     inverse <<- NULL
@@ -26,15 +26,15 @@ makeCacheMatrix <- function(x = matrix()) { # takes a matrix object as argument
 }
 
 
-## Computes, caches, and returns    matrix inverse
+## Computes, caches, and returns the inverse of the  matrix 
 
-cacheSolve <- function(x, ...) {
+cacheSolve <- function(x, ...) { # takes a matrix class variable as an argument
         
   inverse <- x$getinverse() # find inverse of matrix created by makeCacheMatrix
   
   # if inverse was not cahced i.e not NULL then return inverse
   if(!is.null(inverse)) {
-    message("getting cached data")
+    message("getting cached data") # message to say the cahced inverse is being returned
     return(inverse)
   }
   data <- x$get() # get the values of the matrix created by makeCacheMatrix 
